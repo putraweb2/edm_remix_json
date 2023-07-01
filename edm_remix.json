@@ -5,7 +5,7 @@
 // pastikan mode offline mp3 true jika merubah ke mode mp3
 // https://kabinetdeveloperexample.blogspot.com/2020/12/optimasi-blogger.html
 
-"HOMEURL" : "https://archive.org/embed/edm_remixes_of_popular_songs_10&playlist=1",
+"HOMEURL" : "https://raw.githubusercontent.com/putraweb2/edm_remix_json/main/edm_playlist.html",
 
 // testing server json yang dipakai
 "JSON_POPUP_WAIT" : "Server Ready . . . ",
