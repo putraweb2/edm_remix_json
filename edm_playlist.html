@@ -1,0 +1,122 @@
+<html>
+<!-- ganti BG playlist dibaris 39-->
+<!-- ganti gambar diatas audi player  dibaris 54-->
+<!-- ganti mp3 di baris 62-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Mp3 Streaming</title>
+    <style>
+    body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    a {
+      display: block;
+      background-color: rgba(242, 242, 242, 0.8);;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+      border-radius: 5px;
+    }
+    .active {
+      background-color: #333;
+      color: #f2f2f2;
+    }
+    #audioPlayer {
+      width: 100%;
+    }
+
+#playlist {
+            background-image: url("https://i.pinimg.com/originals/10/d8/5f/10d85f5a7f36024a4a64eb99184a54bd.gif");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+
+  </style>
+</head>
+
+<body>
+
+<!-- ganti ini untuk mengganti gambar di atas media player-->
+<img src="https://media.tenor.com/wlFwmcbYQA0AAAAC/music-record.gif" alt="gambar" style="width: 100%; height: auto;">
+
+
+<audio controls="" id="audioPlayer">
+    <source src="" type="audio/mpeg"></source>
+    Your browser does not support the audio element.
+</audio>
+
+<!-- Tambahkan mp3 stream disini -->
+<ul id="playlist">
+    <li><a data-source="https://raw.githubusercontent.com/alexakhmat1101/testingsc/main/Slwt%20annabi%20shollu'alai_101150-2.mp3" href="#">Sholawat Sholu Alai</a></li>
+    <li><a data-source="https://raw.githubusercontent.com/alexakhmat1101/testingsc/main/Slwt%20bhussro_101037-2.mp3" href="#">Sholawat Bushroh</a></li>
+    <li><a data-source="https://raw.githubusercontent.com/alexakhmat1101/testingsc/main/Slwt%20bhussro_101037-2.mp3" href="#">Sholawat Bushroh</a></li>
+    <li><a data-source="https://github.com/putraweb2/lagu_maroon_5/raw/main/girls_like_you.mp3" href="#">Girl Like You</a></li>
+    <li><a data-source="https://github.com/putraweb2/lagu_maroon_5/raw/main/payphone.mp3" href="#">Payphone</a></li>
+    <li><a data-source="https://github.com/putraweb2/lagu_maroon_5/raw/main/moves_like_jagger.mp3" href="#">Move Like Jagger</a></li>
+   <li><a data-source="file:///android_asset/music/media/musik/01.mp3" href="#">mp3 lokalan</a></li>
+</ul>
+</div>
+
+<script type="text/javascript">
+    function playSong(source, title, currentIndex) {
+      var audioPlayer = document.getElementById("audioPlayer");
+      audioPlayer.src = source;
+      audioPlayer.play();
+      audioPlayer.setAttribute("title", title);
+
+      var links = document.querySelectorAll("#playlist a");
+      for (var i = 0; i < links.length; i++) {
+        if (i === currentIndex) {
+          links[i].classList.add("active");
+        } else {
+          links[i].classList.remove("active");
+        }
+      }
+    }
+
+    var playlist = document.getElementById("playlist");
+    var links = playlist.getElementsByTagName("a");
+    var currentIndex = 0;
+    links[currentIndex].classList.add("active");
+
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener("click", function(event) {
+        event.preventDefault();
+        var source = this.getAttribute("data-source");
+        var title = this.innerHTML;
+        currentIndex = Array.from(links).indexOf(this);
+        playSong(source, title, currentIndex);
+      });
+    }
+
+    var audioPlayer = document.getElementById("audioPlayer");
+    audioPlayer.addEventListener("ended", function() {
+      currentIndex++;
+      if (currentIndex === links.length) {
+        currentIndex = 0;
+      }
+      var nextSong = links[currentIndex];
+      var source = nextSong.getAttribute("data-source");
+      var title = nextSong.innerHTML;
+      playSong(source, title, currentIndex);
+    });
+
+        playlist.style.overflowY = "auto";
+    playlist.style.maxHeight = "500px";
+  </script>
+</body>
+</html>
